@@ -1,3 +1,32 @@
+<h1 align="center"> NgVideoGameDb </h1>
+
+<h2 align="center"> Screenshots </h2>
+
+<p align="center">
+<img alt="SuiteCRMLogo" width="70%" src="https://github.com/A-GHOSH-dev/Angular-and-API-project/blob/master/images/1.png" />
+  </p>
+------------
+<p align="center">
+<img alt="SuiteCRMLogo" width="70%" src="https://github.com/A-GHOSH-dev/Angular-and-API-project/blob/master/images/2.png" />
+  </p>
+------------
+<p align="center">
+<img alt="SuiteCRMLogo" width="70%" src="https://github.com/A-GHOSH-dev/Angular-and-API-project/blob/master/images/3.png" />
+  </p>
+------------
+<p align="center">
+<img alt="SuiteCRMLogo" width="70%" src="https://github.com/A-GHOSH-dev/Angular-and-API-project/blob/master/images/4.png" />
+  </p>
+------------
+<p align="center">
+<img alt="SuiteCRMLogo" width="70%" src="https://github.com/A-GHOSH-dev/Angular-and-API-project/blob/master/images/5.png" />
+  </p>
+------------
+<p align="center">
+<img alt="SuiteCRMLogo" width="70%" src="https://github.com/A-GHOSH-dev/Angular-and-API-project/blob/master/images/6.png" />
+  </p>
+
+
 # NgVideoGameDb
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8.
