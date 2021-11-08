@@ -35,6 +35,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 https://rapidapi.com/accujazz/api/rawg-video-games-database/details
 
+# Angular Guide
+
 - Install VS Code
 	
 - Install Node.js
