@@ -35,6 +35,59 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 https://rapidapi.com/accujazz/api/rawg-video-games-database/details
 
+- Install VS Code
+	
+- Install Node.js
+	
+- npm install @angular/cli –g
+	
+- ng new appname
+	
+- Would you like to add Angular routing? No/Yes (as per requirement)
+	
+- Which stylesheet format would you like to use? CSS
+	
+- ng serve
+	
+- cd src
+	
+- cd app
+	
+- ng generate component componentname
+
+- In app.module.ts:
+
+```
+import { RouterModule } from '@angular/router';
+ 
+In app-routing.module.ts:
+import { HelloComponent } from './hello/hello.component';
+import { WorldComponent } from './world/world.component';
+ 
+
+
+const routes: Routes = [
+  {path: 'hello', component: HelloComponent},
+ 
+ { path: 'world', component: WorldComponent} 
+];
+
+ ```
+ 
+- (here in the components, u can use ur component names, e.g.- suppose ur component name is EmployeeList, then ur Component name will be EmployeeListComponent)
+ 
+- In app.component.html:
+
+```
+<router-outlet></router-outlet>
+```
+
+- Now run server - ng serve
+ 
+- in the browser url, give ur path name as http://localhost:4200/pathname 
+ 
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
