@@ -1,0 +1,11 @@
+{
+    "TITLE": "Bienvenido, los detalles de su perfil son",
+    "USER_INFO":{
+        "NAME":"Nombre",
+        "WORKING_PROFILE":"Perfil de trabajo",
+        "ADDRESS_DETAILS":"Detalles de dirección",
+        "PHONE_NUMBER":"Número de teléfono",
+        "EMAIL_ADDRESS":"Dirección de correo electrónico",
+        "RELEVANT_EXPERIENCE":"Experiencia relevante"
+    }
+}
