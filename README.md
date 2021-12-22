@@ -89,27 +89,143 @@ const routes: Routes = [
 - in the browser url, give ur path name as http://localhost:4200/pathname 
  
 
+## i18n NgX Translate
+How to Add Translation (i18n) in Angular Application?
+We will be going through step by step tutorial, learn how to implement internationalization with examples and various use-cases.
 
-## Development server
+- Step 1 – Create Angular App
+```
+npm install -g @angular/cli
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ng new angular-ngx-translate-demo-app
 
-## Code scaffolding
+cd angular-ngx-translate-demo-app
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Step 2 – Install Ngx Translate and HTTP Loader Plugins
+```
+npm install @ngx-translate/core --save
+npm install @ngx-translate/http-loader --save
+```
 
-## Build
+- Step 3 – Update App Module
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-## Running unit tests
+// Factory function required during AOT compilation
+export function httpTranslateLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
 
-## Running end-to-end tests
+export class AppModule { }
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Step 4 – Setup Translation JSON Files
+```
+we keep these translation files at ~src/assets/i18n/[lang].json
 
-## Further help
+{
+    "TITLE": "Welcome, your profile details are",
+    "USER_INFO":{
+        "NAME":"Name",
+        "WORKING_PROFILE":"Working Profile",
+        "ADDRESS_DETAILS":"Address Details",
+        "PHONE_NUMBER":"Phone Number",
+        "EMAIL_ADDRESS":"Email Address",
+        "RELEVANT_EXPERIENCE":"Relevant Experience"
+    }
+}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Step 5 – Inject TranslateService in Component
+```
+open the app.component.ts file to import the TranslateService and inject it in the component’s constructor.
+
+import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  
+  constructor(
+    public translate: TranslateService
+  ){
+    // Register translation languages
+    translate.addLangs(['en', 'es', 'fr']);
+    // Set default language
+    translate.setDefaultLang('en');
+  } 
+}
+```
+
+- Step 6 – Add Translation Switch to Change Language
+```
+In the AppComponent add the translateLanguageTo() method which in turn calling the use() method.
+
+//Switch language
+  translateLanguageTo(lang: string) {
+    this.translate.use(lang);
+  }
+```
+
+- Step 7 – Update HTML with TranslatePipe and Language Switch
+```
+Now, open the app.component.html file and update it with the following code:
+
+Change Language : <select #selLang (change)="translateLanguageTo(selLang.value)">
+  <option *ngFor="let language of translate.getLangs()" [value]="language">{{ language }}</option>
+</select>
+<h1>{{'TITLE' | translate}}</h1>
+  <ul>
+    <li>
+      <b>{{'USER_INFO.NAME' | translate}}</b> : Heidi Miller
+    </li>
+    <li>
+      <b>{{'USER_INFO.WORKING_PROFILE' | translate}}</b> : Proactive discrete moderator
+    </li>
+    <li>
+      <b>{{'USER_INFO.ADDRESS_DETAILS' | translate}}</b> : 05516 Kristina Heights
+    </li>
+    <li>
+      <b>{{'USER_INFO.PHONE_NUMBER' | translate}}</b> : 253.647.7397 x4073
+    </li>
+    <li>
+      <b>{{'USER_INFO.EMAIL_ADDRESS' | translate}}</b> : Heidi_Miller33@yahoo.com
+    </li>
+    <li>
+      <b>{{'USER_INFO.RELEVANT_EXPERIENCE' | translate}}</b> : 4.5 Years
+    </li>
+  </ul>
+ ```
+ 
+- Step 8 – Run Application
+
